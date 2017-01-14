@@ -42,11 +42,45 @@ def processRequest(req):
        # print(platform)
        # print(query_string)
         handle = query_string[-1]
-        print(handle)
+        #print(handle)
         res = makeWebhookResult2(platform,handle)
+
+    elif req.get("result").get("action") == "generate.randomproblem":
+        
+        
+        keyword = req.get("result").get("parameters").get("coding-problem-tags")
+        res = makeWebhookResult3(keyword,handle)
+              
         
         
     return res
+
+
+
+def makeWebhookResult3(keyword,handle):
+
+    url = 'http://code-drills.com/profile?handles=' + handle
+    data = requests.get(url).text
+    soup = BeautifulSoup(data, 'html.parser')
+    container = soup.find('div', attrs = {'id': keyword})
+    links = container.findAll('a')
+    speech = 'Here you go :' + '\n'
+    for link in links:
+        speech += link.get('href') + '\n'
+    
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        "data": data,
+        # "contextOut": [],
+        "source": "randomproblemgenerator"
+    }
+
+
+
+
+
 
 def makeWebhookResult(data,req):
 
@@ -86,7 +120,7 @@ def makeWebhookResult(data,req):
 
 def makeWebhookResult2(platform,handle):
     
-    print(platform)
+    #print(platform)
     if(platform == "codeforces"):
         url = 'http://codeforces.com/api/user.info?handles=' + handle
         print(url)
