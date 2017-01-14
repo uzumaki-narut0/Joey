@@ -50,7 +50,7 @@ def processRequest(req):
         query_string = req.get("result").get("resolvedQuery").strip().split()
         for word in query_string:
             if word[0]=='@':
-                handle = word
+                handle = word[1:]
                 break
         count = req.get("result").get("parameters").get("count")
         print(count)
