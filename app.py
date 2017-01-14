@@ -74,17 +74,14 @@ def processRequest(req):
 def makeWebhookResult_editorial(problem_code):
     url = 'http://www.codechef.com/problems/' + problem_code
     res=requests.get(url)
-    print(url)
     res.raise_for_status()
     soup = BeautifulSoup(res.text,'html.parser')
 
     container = soup.find('table', attrs = {'align':'left'})
     if "Editorial" in container.text:
-        print('$$$$$$$$$$$$$$$$$')
         y = container.findAll('tr')
         i=0
         while i < len(y):
-            print('SSSSSS')
             e = y[i]
             if "Editorial" in e.text:
                 s=e.find('a')
@@ -223,6 +220,15 @@ def makeWebhookResult2(platform,handle):
         hackerearth_rating = anchor.text
         speech = "Here it is : " + hackerearth_rating
         #print(hackerearth_rating)
+
+    elif(platform == "spoj" or platform == "SPOJ")
+        url='http://www.spoj.com/users/' + handle
+        data = requests.get(url).text
+        soup = BeautifulSoup(data, 'html.parser')
+        container = soup.find('div', attrs = {'id':'user-profile-left'})
+        links = container.findAll('p')
+        print(links[2].text)
+        speech = "Here it is : " + links[2].text
         
 
     print("Response:")
