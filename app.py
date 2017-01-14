@@ -60,6 +60,7 @@ def processRequest(req):
 def makeWebhookResult3(keyword,handle):
 
     url = 'http://code-drills.com/profile?handles=' + handle
+    print(url)
     data = requests.get(url).text
     soup = BeautifulSoup(data, 'html.parser')
     container = soup.find('div', attrs = {'id': keyword})
