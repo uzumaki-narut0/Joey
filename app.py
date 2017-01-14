@@ -143,7 +143,7 @@ def makeWebhookResult_editorial(problem_code):
     return {
         "speech": speech,
         "displayText": speech,
-        "source": "www.testclan.com",
+        "source": "www.messengerdemo.parseapp.com",
          "data": data
         # "contextOut": [],
         
