@@ -81,6 +81,7 @@ def makeWebhookResult_editorial(problem_code):
     container = soup.find('table', attrs = {'align':'left'})
 
     if "Editorial" in container.text:
+        print('$$$$$$$$$$$$$$$$$')
         y = container.findAll('tr')
         i=0
         while i < len(y):
