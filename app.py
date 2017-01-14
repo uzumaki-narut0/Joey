@@ -50,6 +50,7 @@ def processRequest(req):
         query_string = req.get("result").get("resolvedQuery").strip().split()
         handle = query_string[-1]
         count = req.get("result").get("parameters").get("count")
+        print(count)
         #print(keyword)
         res = makeWebhookResult3(keyword,handle,count)
               
@@ -58,7 +59,7 @@ def processRequest(req):
 
 
 def makeWebhookResult3(keyword,handle,count):
-
+    print(count)
     url = 'http://code-drills.com/profile?handles=' + handle
     #print(url)
     data = requests.get(url).text
