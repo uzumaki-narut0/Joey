@@ -83,9 +83,9 @@ def makeWebhookResult_editorial(problem_code):
     if "Editorial" in container.text:
         y = container.findAll('tr')
         i=0
-        while i<len(y):
+        while i < len(y):
             e = y[i]
-            if("Editorial" in e.text):
+            if "Editorial" in e.text:
                 s=e.find('a')
                 speech = s.text
                 break
@@ -93,7 +93,7 @@ def makeWebhookResult_editorial(problem_code):
         
     else:
         speech = "I am afraid, this problem has no Editorial"
-
+    print(speech)
     return {
         "speech": speech,
         "displayText": speech,
@@ -105,14 +105,13 @@ def makeWebhookResult_editorial(problem_code):
 
 
 def makeWebhookResult3(keyword,handle,count):
-    print(count)
+    #print(count)
     url = 'http://code-drills.com/profile?handles=' + handle
-    print(url)
+    #print(url)
     data = requests.get(url).text
     soup = BeautifulSoup(data, 'html.parser')
     container = soup.find('div', attrs = {'id': keyword})
     links = container.findAll('a')
-    print('sdhgfhdsfhjds')
     speech = 'Here you go:'
     speech += '\n'
     speech += '\n'
@@ -121,7 +120,7 @@ def makeWebhookResult3(keyword,handle,count):
         speech += links[i].get('href')
         speech += '\n'
         speech += '\n'
-        print(speech)
+        #print(speech)
     
 
     return {
