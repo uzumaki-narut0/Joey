@@ -79,12 +79,12 @@ def makeWebhookResult_editorial(problem_code):
     soup = BeautifulSoup(res.text,'html.parser')
 
     container = soup.find('table', attrs = {'align':'left'})
-    print('SSSSSS')
     if "Editorial" in container.text:
         print('$$$$$$$$$$$$$$$$$')
         y = container.findAll('tr')
         i=0
         while i < len(y):
+            print('SSSSSS')
             e = y[i]
             if "Editorial" in e.text:
                 s=e.find('a')
