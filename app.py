@@ -107,7 +107,7 @@ def makeWebhookResult2(platform,handle):
         res.raise_for_status()
         soupobj = BeautifulSoup(res.text,'html.parser')
         ranks = soupobj.select('hx')
-        print ('RANKINGS FOR '+ str(name) +'\n' )
+        print ('RANKINGS FOR '+ str(handle) +'\n' )
         if ranks[0].getText()=='NA':
                 print('LONG CHALLENGE:'+ranks[0].getText())
         else:
