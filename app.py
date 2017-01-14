@@ -112,6 +112,7 @@ def makeWebhookResult3(keyword,handle,count):
     soup = BeautifulSoup(data, 'html.parser')
     container = soup.find('div', attrs = {'id': keyword})
     links = container.findAll('a')
+    print('sdhgfhdsfhjds')
     speech = 'Here you go:'
     speech += '\n'
     speech += '\n'
