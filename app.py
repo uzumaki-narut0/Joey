@@ -38,10 +38,10 @@ def processRequest(req):
        # return {}
         platform = req.get("result").get("parameters").get("website").strip()
         query_string = req.get("result").get("resolvedQuery").strip().split()
-        print(platform)
-        print(query_string)
+       # print(platform)
+       # print(query_string)
         handle = query_string[-1]
-        print(handle)
+       # print(handle)
         res = makeWebhookResult2(platform,handle)
         
         
@@ -92,11 +92,11 @@ def makeWebhookResult2(platform,handle):
         response = urllib.request.urlopen(url)
         data = json.loads(response.read().decode('utf-8'))
 
-        speech = 'Current Rating : ' + str(data['result'][0]['rating'])
-        print(speech)
-       # speech += 'Current Rank   : ' + data['result'][0]['rank']
-       # speech += 'Max Rating     : ' + str(data['result'][0]['maxRating'])
-       # speech += 'Max Rank       : ' + data['result'][0]['maxRank']
+        speech = 'Current Rating : ' + str(data['result'][0]['rating']) + '\n'
+       # print(speech)
+        speech += 'Current Rank   : ' + data['result'][0]['rank'] + '\n'
+        speech += 'Max Rating     : ' + str(data['result'][0]['maxRating']) +'\n'
+        speech += 'Max Rank       : ' + data['result'][0]['maxRank']
     elif(platform == "codechef"):
             pass
     #data = result
