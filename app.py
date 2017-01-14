@@ -157,7 +157,7 @@ def makeWebhookResult3(keyword,handle,count):
                 "payload": {
                     "template_type": "generic",
                     "elements": [{
-                        "title": "Here is the Editorial",
+                        "title": "Go, nail them!",
                         #"subtitle": "Element #1 of an hscroll",
                         #"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                         "buttons": [
@@ -170,10 +170,11 @@ def makeWebhookResult3(keyword,handle,count):
 
 
     
-    
+    '''
     speech = 'Here you go:'
     speech += '\n'
     speech += '\n'
+    '''
     cnt = int(count)
     for i in range(cnt):
         speech = ""
@@ -185,7 +186,7 @@ def makeWebhookResult3(keyword,handle,count):
         arr.append({
                             "type": "web_url",
                             "url": speech,
-                            "title": "1"})
+                            "title": links[i].text})
 
         print(arr[i]["url"])
     
