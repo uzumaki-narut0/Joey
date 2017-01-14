@@ -42,7 +42,7 @@ def processRequest(req):
        # print(platform)
        # print(query_string)
         handle = query_string[-1]
-       # print(handle)
+        print(handle)
         res = makeWebhookResult2(platform,handle)
         
         
@@ -100,6 +100,7 @@ def makeWebhookResult2(platform,handle):
         speech += 'Max Rank       : ' + data['result'][0]['maxRank']
         
     elif(platform == "codechef"):
+        print('working here')
         url = 'https://www.codechef.com/users/' + handle
         res = requests.get(ini+name)
         #res.raise_for_status()
