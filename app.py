@@ -46,13 +46,12 @@ def processRequest(req):
         res = makeWebhookResult2(platform,handle)
 
     elif req.get("result").get("action") == "generate.randomproblem":
-        
-        
         keyword = req.get("result").get("parameters").get("coding-problem-tags")
+        query_string = req.get("result").get("resolvedQuery").strip().split()
+        handle = query_string[-1]
+        print(keyword)
         res = makeWebhookResult3(keyword,handle)
               
-        
-        
     return res
 
 
