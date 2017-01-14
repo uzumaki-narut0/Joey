@@ -76,7 +76,7 @@ def makeWebhookResult_editorial(problem_code):
     res=requests.get(url)
     print(url)
     res.raise_for_status()
-    soup = bs4.BeautifulSoup(res.text,'html.parser')
+    soup = BeautifulSoup(res.text,'html.parser')
 
     container = soup.find('table', attrs = {'align':'left'})
     print('SSSSSS')
