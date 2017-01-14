@@ -100,28 +100,40 @@ def makeWebhookResult2(platform,handle):
         speech += 'Max Rank       : ' + data['result'][0]['maxRank']
         
     elif(platform == "codechef"):
-        print('working here')
+        #print('working here')
         url = 'https://www.codechef.com/users/' + handle
-        print(url)
+        #print(url)
         res = requests.get(url)
         res.raise_for_status()
         soupobj = BeautifulSoup(res.text,'html.parser')
         ranks = soupobj.select('hx')
         if ranks[0].getText()=='NA':
-                speech = 'Long Challenge:' +'NA' + '\n'
+                speech = 'Long Challenge: ' +'NA' + '\n'
         else:
-                speech = 'Long Challenge:'+ranks[0].getText()+' / '+ranks[1].getText() + '\n'
+                speech = 'Long Challenge: '+ranks[0].getText()+' / '+ranks[1].getText() + '\n'
         if len(ranks)<3 or ranks[2].getText()=='NA':
-                speech += 'Short Challenge:'+'NA' + '\n'
+                speech += 'Short Challenge: '+'NA' + '\n'
         else:
-                speech += 'Short Challenge:'+ranks[2].getText()+' / '+ranks[3].getText() + '\n'
+                speech += 'Short Challenge: '+ranks[2].getText()+' / '+ranks[3].getText() + '\n'
         if len(ranks)<4 or ranks[4].getText()=='NA':
-                speech += 'LunchTime:'+ 'NA' + '\n'
+                speech += 'LunchTime: '+ 'NA' + '\n'
         else:	
-                speech += 'LunchTime:'+ranks[4].getText()+' / '+ranks[5].getText() + '\n'
+                speech += 'LunchTime: '+ranks[4].getText()+' / '+ranks[5].getText() + '\n'
         speech += 'Global Rank / Country Rank'
         #speech = "working"
     #data = result
+
+    elif(platform == "hackerearth"):
+        url = 'https://www.hackerearth.com/@' + handle
+        data = requests.get(url).text
+        soup = BeautifulSoup(data, "lxml")
+
+        container = soup.findAll('span', attrs = {'class': 'track-following-num'})
+        anchor = container[1].find('a')
+        hackerearth_rating = anchor.text
+
+        print(hackerearth_rating)
+        
 
     print("Response:")
     print(speech)
