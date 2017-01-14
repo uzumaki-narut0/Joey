@@ -87,9 +87,9 @@ def makeWebhookResult2(data,req):
         response = urllib.request.urlopen(url)
         data = json.loads(response.read().decode('utf-8'))
         
-        speech = 'Current Rating : ' + str(data['result'][0]['rating']
+        speech = 'Current Rating : ' + str(data['result'][0]['rating'])
         speech += 'Current Rank   : ' + data['result'][0]['rank']
-        speech += 'Max Rating     : ' + str(data['result'][0]['maxRating']
+        speech += 'Max Rating     : ' + str(data['result'][0]['maxRating'])
         speech += 'Max Rank       : ' + data['result'][0]['maxRank']
     elif(platform == "codechef"):
             pass
