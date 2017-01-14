@@ -49,7 +49,7 @@ def processRequest(req):
         keyword = req.get("result").get("parameters").get("coding-problem-tags")
         query_string = req.get("result").get("resolvedQuery").strip().split()
         handle = query_string[-1]
-        print(keyword)
+        #print(keyword)
         res = makeWebhookResult3(keyword,handle)
               
     return res
@@ -59,12 +59,13 @@ def processRequest(req):
 def makeWebhookResult3(keyword,handle):
 
     url = 'http://code-drills.com/profile?handles=' + handle
-    print(url)
+    #print(url)
     data = requests.get(url).text
     soup = BeautifulSoup(data, 'html.parser')
     container = soup.find('div', attrs = {'id': keyword})
     links = container.findAll('a')
-    speech = 'Here you go :' + '\n'
+    speech = 'Here you go :'
+    speech += '\n'
     for link in links:
         speech += link.get('href') + '\n'
     
