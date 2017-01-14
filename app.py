@@ -48,7 +48,10 @@ def processRequest(req):
     elif req.get("result").get("action") == "generate.randomproblem":
         keyword = req.get("result").get("parameters").get("coding-problem-tags")
         query_string = req.get("result").get("resolvedQuery").strip().split()
-        handle = query_string[-1]
+        for word in query_string:
+            if word[0]=='@':
+                handle = word
+                break
         count = req.get("result").get("parameters").get("count")
         print(count)
         #print(keyword)
