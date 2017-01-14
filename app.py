@@ -66,12 +66,14 @@ def makeWebhookResult3(keyword,handle):
     links = container.findAll('a')
     speech = 'Here you go:'
     speech += '\n'
+    speech += '\n'
     count = 0
     for link in links:
         if count == 4:
             break
         count += 1
         speech += link.get('href') + '\n'
+        speech += '\n'
     
 
     return {
