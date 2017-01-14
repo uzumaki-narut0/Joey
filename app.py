@@ -124,6 +124,7 @@ def makeWebhookResult_editorial(problem_code):
             }
         }}
     else:
+        print(flag)
         data={}
 
 
