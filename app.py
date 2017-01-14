@@ -34,6 +34,13 @@ def processRequest(req):
         result = urllib.request.urlopen(baseurl).read()
         data = json.loads(result)
         res = makeWebhookResult(data,req)
+    elif req.get("result").get("action") == "codinguser.status":
+        platform = req.get("result").get("parameters").get("website")
+        query_string = req.get("result").get("resolvedQuery").strip().split()
+        handle = query_string[-1]
+        res = makeWebhookResult2(data,platform)
+        
+        
     return res
 
 def makeWebhookResult(data,req):
@@ -68,8 +75,41 @@ def makeWebhookResult(data,req):
         "displayText": speech,
         "data": data,
         # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
+        "source": "contesttracker"
     }
+
+
+def makeWebhookResult2(data,req):
+
+    platform = platform.strip()
+    if(platform.strip() == "codeforces"):
+        url = 'http://codeforces.com/api/user.info?handles=' + handle
+        response = urllib.request.urlopen(url)
+        data = json.loads(response.read().decode('utf-8'))
+        
+        speech = 'Current Rating : ' + str(data['result'][0]['rating'])
+        speech += 'Current Rank   : ' + data['result'][0]['rank']
+        speech += 'Max Rating     : ' + str(data['result'][0]['maxRating'])
+        speech += 'Max Rank       : ' + data['result'][0]['maxRank'])
+    elif(platform == "codechef"):
+            pass
+    data = result
+
+    print("Response:")
+    print(speech)
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        "data": data,
+        # "contextOut": [],
+        "source": "cf-stats"
+    }
+
+
+
+
+
 
 
 if __name__ == '__main__':
