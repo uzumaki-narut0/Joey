@@ -187,7 +187,7 @@ def makeWebhookResult3(keyword,handle,count):
                             "url": speech,
                             "title": "1"})
 
-    
+        print(arr[i]["url"])
     
 
     return {
