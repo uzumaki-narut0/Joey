@@ -71,6 +71,11 @@ def processRequest(req):
         res = makeWebhookResult_editorial(problemcode)
     return res
 
+'''
+function which takes problem_code as parameter
+and returns editorial page link if present on codechef
+'''
+
 def makeWebhookResult_editorial(problem_code):
     url = 'http://www.codechef.com/problems/' + problem_code
     res=requests.get(url)
@@ -92,21 +97,62 @@ def makeWebhookResult_editorial(problem_code):
     else:
         speech = "I am afraid, this problem has no Editorial"
     print(speech)
-    '''remove below code if not works'''
+    '''remove below code if not works
 
     data = {"facebook": {"attachment": {"type": "image","payload": {"url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"}}}}
 
+    '''
 
+    data = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "First card",
+                    "subtitle": "Element #1 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.messenger.com",
+                        "title": "web url"
+                    }, {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, {
+                    "title": "Second card",
+                    "subtitle": "Element #2 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
+            }
+        }
+    }
+
+
+
+
+
+    
     return {
         "speech": speech,
         "displayText": speech,
         "source": "www.testclan.com",
-        "data": data
+         "data": data
         # "contextOut": [],
         
     }
 
 
+'''
+a function which generates random spoj problem
+'''
 
 def makeWebhookResult3(keyword,handle,count):
     #print(count)
@@ -137,7 +183,9 @@ def makeWebhookResult3(keyword,handle,count):
 
 
 
-
+'''
+a function which returns upcoming coding events
+'''
 
 
 def makeWebhookResult(data,req):
@@ -175,6 +223,10 @@ def makeWebhookResult(data,req):
         "source": "contesttracker"
     }
 
+'''
+a function to return users stats
+based on platform and his handle as parameters
+'''
 
 def makeWebhookResult2(platform,handle):
     
