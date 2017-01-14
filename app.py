@@ -125,6 +125,7 @@ def makeWebhookResult2(platform,handle):
 
     elif(platform == "hackerearth"):
         url = 'https://www.hackerearth.com/@' + handle
+        print(url)
         data = requests.get(url).text
         soup = BeautifulSoup(data, "lxml")
 
