@@ -64,9 +64,13 @@ def makeWebhookResult3(keyword,handle):
     soup = BeautifulSoup(data, 'html.parser')
     container = soup.find('div', attrs = {'id': keyword})
     links = container.findAll('a')
-    speech = 'Here you go :'
+    speech = 'Here you go:'
     speech += '\n'
+    count = 0
     for link in links:
+        if count == 4:
+            break
+        count += 1
         speech += link.get('href') + '\n'
     
 
