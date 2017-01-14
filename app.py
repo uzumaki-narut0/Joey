@@ -3,7 +3,8 @@
 import urllib.request
 import json
 import os
-
+import requests
+from bs4 import BeautifulSoup
 from flask import Flask
 from flask import request
 from flask import make_response
@@ -97,8 +98,28 @@ def makeWebhookResult2(platform,handle):
         speech += 'Current Rank   : ' + data['result'][0]['rank'] + '\n'
         speech += 'Max Rating     : ' + str(data['result'][0]['maxRating']) +'\n'
         speech += 'Max Rank       : ' + data['result'][0]['maxRank']
+        
     elif(platform == "codechef"):
-            pass
+        url = 'https://www.codechef.com/users/' + handle
+        res = requests.get(ini+name)
+        #res.raise_for_status()
+        soupobj = BeautifulSoup(res.text,'html.parser')
+        ranks = soupobj.select('hx')
+        print ('RANKINGS FOR '+ str(name) +'\n' )
+        if ranks[0].getText()=='NA':
+                print('LONG CHALLENGE:'+ranks[0].getText())
+        else:
+                print ('LONG CHALLENGE:'+ranks[0].getText()+'/'+ranks[1].getText() )
+        if len(ranks)<3 or ranks[2].getText()=='NA':
+                print ('SHORT CHALLENGE:'+'NA' )
+        else:
+                print ('SHORT CHALLENGE:'+ranks[2].getText()+'/'+ranks[3].getText() )
+        if len(ranks)<4 or ranks[4].getText()=='NA':
+                print ('LUNCHTIME:'+ 'NA' )
+        else:	
+                print ('LUNCHTIME:'+ranks[4].getText()+'/'+ranks[5].getText() )
+        print ('**Global Rank/Country Rank' )
+        speech = "working"
     #data = result
 
     print("Response:")
