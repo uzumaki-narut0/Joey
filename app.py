@@ -102,7 +102,7 @@ def makeWebhookResult_editorial(problem_code):
         "displayText": speech,
         "data": data
         # "contextOut": [],
-        "source": "editorialsource"
+        "source": "www.testclan.com"
     }
 
 
