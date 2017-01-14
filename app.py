@@ -125,15 +125,15 @@ def makeWebhookResult2(platform,handle):
 
     elif(platform == "hackerearth"):
         url = 'https://www.hackerearth.com/@' + handle
-        print(url)
+        #print(url)
         data = requests.get(url).text
         soup = BeautifulSoup(data, 'html.parser')
 
         container = soup.findAll('span', attrs = {'class': 'track-following-num'})
         anchor = container[1].find('a')
         hackerearth_rating = anchor.text
-
-        print(hackerearth_rating)
+        speech = "Here it is : " + hackerearth_rating
+        #print(hackerearth_rating)
         
 
     print("Response:")
