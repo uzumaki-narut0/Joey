@@ -127,7 +127,7 @@ def makeWebhookResult2(platform,handle):
         url = 'https://www.hackerearth.com/@' + handle
         print(url)
         data = requests.get(url).text
-        soup = BeautifulSoup(data, "lxml")
+        soup = BeautifulSoup(data, 'html.parser')
 
         container = soup.findAll('span', attrs = {'class': 'track-following-num'})
         anchor = container[1].find('a')
