@@ -72,9 +72,9 @@ def processRequest(req):
     return res
 
 def makeWebhookResult_editorial(problem_code):
-    ini = 'http://www.codechef.com/problems/'
-    name = problem_code
-    res=requests.get(ini+name)
+    url = 'http://www.codechef.com/problems/' + problem_code
+    res=requests.get(url)
+    print(url)
     res.raise_for_status()
     soup = bs4.BeautifulSoup(res.text,'html.parser')
 
