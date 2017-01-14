@@ -79,7 +79,7 @@ def makeWebhookResult_editorial(problem_code):
     soup = bs4.BeautifulSoup(res.text,'html.parser')
 
     container = soup.find('table', attrs = {'align':'left'})
-
+    print('SSSSSS')
     if "Editorial" in container.text:
         print('$$$$$$$$$$$$$$$$$')
         y = container.findAll('tr')
@@ -100,7 +100,7 @@ def makeWebhookResult_editorial(problem_code):
         "displayText": speech,
         "data": data,
         # "contextOut": [],
-        "source": "randomproblemgenerator"
+        "source": "editorialsource"
     }
 
 
