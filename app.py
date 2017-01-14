@@ -69,7 +69,8 @@ def makeWebhookResult3(keyword,handle,count):
     speech = 'Here you go:'
     speech += '\n'
     speech += '\n'
-    for i in range(count):
+    cnt = int(count)
+    for i in range(cnt):
         speech += links[i].get('href') + '\n'
         speech += '\n'
         print(speech)
