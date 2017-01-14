@@ -31,11 +31,11 @@ def webhook():
 def processRequest(req):
     if req.get("result").get("action") != "codingevents.response":
         return {}
-        baseurl = 'https://tranquil-caverns-50595.herokuapp.com/'
-        result = urllib.request.urlopen(baseurl).read()
-        data = json.loads(result)
-        res = makeWebhookResult(data,req)
-        return res
+    baseurl = 'https://tranquil-caverns-50595.herokuapp.com/'
+    result = urllib.request.urlopen(baseurl).read()
+    data = json.loads(result)
+    res = makeWebhookResult(data,req)
+    return res
 
 def makeWebhookResult(data,req):
 
