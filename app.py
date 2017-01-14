@@ -35,6 +35,7 @@ def processRequest(req):
         data = json.loads(result)
         res = makeWebhookResult(data,req)
     elif req.get("result").get("action") == "codinguser.status":
+        return {}
         platform = req.get("result").get("parameters").get("website")
         query_string = req.get("result").get("resolvedQuery").strip().split()
         handle = query_string[-1]
