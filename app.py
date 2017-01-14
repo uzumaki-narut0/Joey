@@ -161,7 +161,7 @@ def makeWebhookResult3(keyword,handle,count):
                         #"subtitle": "Element #1 of an hscroll",
                         #"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                         "buttons": [
-                        }]
+                        ]
                     }]
                 }
             }
