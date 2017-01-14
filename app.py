@@ -51,9 +51,10 @@ def makeWebhookResult(data,req):
         return {}
     # print(json.dumps(item, indent=4))
 
-    speech = "Here are your results: " + '\n' #+ #result[0]["name"]
+    speech = "Here are your results: "  #+ #result[0]["name"]
+    speech += '\n'
     for i in range(4):
-        speech = speech + result[i]["name"] + ' on '
+        speech = speech + result[i]["name"] + " on "
         speech = speech + result[i]["start_time"]
         speech = speech + '\n'
     data = result
