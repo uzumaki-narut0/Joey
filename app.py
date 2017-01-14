@@ -102,7 +102,8 @@ def makeWebhookResult2(platform,handle):
     elif(platform == "codechef"):
         print('working here')
         url = 'https://www.codechef.com/users/' + handle
-        res = requests.get(ini+name)
+        print(url)
+        res = requests.get(url)
         #res.raise_for_status()
         soupobj = BeautifulSoup(res.text,'html.parser')
         ranks = soupobj.select('hx')
