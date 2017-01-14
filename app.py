@@ -221,7 +221,7 @@ def makeWebhookResult2(platform,handle):
         speech = "Here it is : " + hackerearth_rating
         #print(hackerearth_rating)
 
-    elif(platform == "spoj" or platform == "SPOJ")
+    elif(platform == "spoj" or platform == "SPOJ"):
         url='http://www.spoj.com/users/' + handle
         data = requests.get(url).text
         soup = BeautifulSoup(data, 'html.parser')
