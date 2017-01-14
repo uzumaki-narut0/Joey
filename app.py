@@ -66,7 +66,8 @@ def processRequest(req):
             if word[0]=='@':
                 problemcode = word[1:]
                 break
-        problemcode = problemcode.upper() 
+        problemcode = problemcode.upper()
+        print(problemcode)
         res = makeWebhookResult_editorial(problemcode)
     return res
 
