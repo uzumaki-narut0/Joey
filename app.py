@@ -83,10 +83,11 @@ def makeWebhookResult(data,req):
     }
 
 
-def makeWebhookResult2(data,req,handle):
+def makeWebhookResult2(data,platform,handle):
 
     platform = platform.strip()
-    if(platform.strip() == "codeforces"):
+    print(platform)
+    if(platform== "codeforces"):
         url = 'http://codeforces.com/api/user.info?handles=' + handle
         print(url)
         response = urllib.request.urlopen(url)
