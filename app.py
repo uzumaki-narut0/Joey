@@ -49,14 +49,15 @@ def processRequest(req):
         keyword = req.get("result").get("parameters").get("coding-problem-tags")
         query_string = req.get("result").get("resolvedQuery").strip().split()
         handle = query_string[-1]
+        count = req.get("result").get("parameters").get("count")
         #print(keyword)
-        res = makeWebhookResult3(keyword,handle)
+        res = makeWebhookResult3(keyword,handle,count)
               
     return res
 
 
 
-def makeWebhookResult3(keyword,handle):
+def makeWebhookResult3(keyword,handle,count):
 
     url = 'http://code-drills.com/profile?handles=' + handle
     #print(url)
@@ -67,11 +68,10 @@ def makeWebhookResult3(keyword,handle):
     speech = 'Here you go:'
     speech += '\n'
     speech += '\n'
-    count = 0
     for link in links:
-        if count == 4:
+        if count == 0:
             break
-        count += 1
+        count -= 1
         speech += link.get('href') + '\n'
         speech += '\n'
     
