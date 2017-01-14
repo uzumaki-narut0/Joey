@@ -41,6 +41,7 @@ def processRequest(req):
         print(platform)
         print(query_string)
         handle = query_string[-1]
+        print(handle)
         res = makeWebhookResult2(data,platform,handle)
         
         
