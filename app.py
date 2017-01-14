@@ -56,7 +56,7 @@ def makeWebhookResult(data,req):
     for i in range(4):
         speech = speech + result[i]["name"] + " on "
         speech = speech + result[i]["start_time"]
-        speech = speech + '\n'
+       # speech = speech + '\n'
     data = result
 
     print("Response:")
