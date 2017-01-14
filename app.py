@@ -103,7 +103,7 @@ def makeWebhookResult_editorial(problem_code):
 
     '''
 
-    data = {
+    data = {"facebook": {
         "attachment": {
             "type": "template",
             "payload": {
@@ -133,7 +133,7 @@ def makeWebhookResult_editorial(problem_code):
                 }]
             }
         }
-    }
+    }}
 
 
 
