@@ -88,10 +88,12 @@ def makeWebhookResult2(data,req,handle):
     platform = platform.strip()
     if(platform.strip() == "codeforces"):
         url = 'http://codeforces.com/api/user.info?handles=' + handle
+        print(url)
         response = urllib.request.urlopen(url)
         data = json.loads(response.read().decode('utf-8'))
         
         speech = 'Current Rating : ' + str(data['result'][0]['rating'])
+        print(speech)
        # speech += 'Current Rank   : ' + data['result'][0]['rank']
        # speech += 'Max Rating     : ' + str(data['result'][0]['maxRating'])
        # speech += 'Max Rank       : ' + data['result'][0]['maxRank']
