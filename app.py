@@ -36,13 +36,13 @@ def processRequest(req):
         res = makeWebhookResult(data,req)
     elif req.get("result").get("action") == "codinguser.status":
        # return {}
-        platform = req.get("result").get("parameters").get("website")
+        platform = req.get("result").get("parameters").get("website").strip()
         query_string = req.get("result").get("resolvedQuery").strip().split()
         print(platform)
         print(query_string)
         handle = query_string[-1]
         print(handle)
-        res = makeWebhookResult2(data,platform,handle)
+        res = makeWebhookResult2(platform,handle)
         
         
     return res
@@ -83,16 +83,15 @@ def makeWebhookResult(data,req):
     }
 
 
-def makeWebhookResult2(data,platform,handle):
-
-    platform = platform.strip()
+def makeWebhookResult2(platform,handle):
+    
     print(platform)
-    if(platform== "codeforces"):
+    if(platform == "codeforces"):
         url = 'http://codeforces.com/api/user.info?handles=' + handle
         print(url)
         response = urllib.request.urlopen(url)
         data = json.loads(response.read().decode('utf-8'))
-        
+
         speech = 'Current Rating : ' + str(data['result'][0]['rating'])
         print(speech)
        # speech += 'Current Rank   : ' + data['result'][0]['rank']
@@ -100,7 +99,7 @@ def makeWebhookResult2(data,platform,handle):
        # speech += 'Max Rank       : ' + data['result'][0]['maxRank']
     elif(platform == "codechef"):
             pass
-    data = result
+    #data = result
 
     print("Response:")
     print(speech)
@@ -108,7 +107,7 @@ def makeWebhookResult2(data,platform,handle):
     return {
         "speech": speech,
         "displayText": speech,
-        "data": data,
+        #"data": data,
         # "contextOut": [],
         "source": "cf-stats"
     }
