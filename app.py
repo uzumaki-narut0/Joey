@@ -91,7 +91,7 @@ def makeWebhookResult_editorial(problem_code):
             i=i+1
         
     else:
-        print("no hurray")
+        speech = "I am afraid, this problem has no Editorial"
 
     return {
         "speech": speech,
