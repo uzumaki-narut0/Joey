@@ -107,7 +107,7 @@ def makeWebhookResult_editorial(problem_code):
 def makeWebhookResult3(keyword,handle,count):
     print(count)
     url = 'http://code-drills.com/profile?handles=' + handle
-    #print(url)
+    print(url)
     data = requests.get(url).text
     soup = BeautifulSoup(data, 'html.parser')
     container = soup.find('div', attrs = {'id': keyword})
@@ -117,7 +117,8 @@ def makeWebhookResult3(keyword,handle,count):
     speech += '\n'
     cnt = int(count)
     for i in range(cnt):
-        speech += links[i].get('href') + '\n'
+        speech += links[i].get('href')
+        speech += '\n'
         speech += '\n'
         print(speech)
     
