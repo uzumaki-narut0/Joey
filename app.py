@@ -93,7 +93,10 @@ def makeWebhookResult_editorial(problem_code):
         speech = "I am afraid, this problem has no Editorial"
     print(speech)
     '''remove below code if not works'''
-    data = {"facebook": {"attachment": {"type": "image","payload": {"url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"}}}
+
+    data = {"facebook": {"attachment": {"type": "image","payload": {"url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"}}}}
+
+
     return {
         "speech": speech,
         "displayText": speech,
