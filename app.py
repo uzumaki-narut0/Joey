@@ -86,10 +86,12 @@ def makeWebhookResult_editorial(problem_code):
     if "Editorial" in container.text:
         y = container.findAll('tr')
         i=0
+        flag = 0
         while i < len(y):
             e = y[i]
             if "Editorial" in e.text:
                 s=e.find('a')
+                flag = 1
                 speech = s.text
                 break
             i=i+1
@@ -102,26 +104,27 @@ def makeWebhookResult_editorial(problem_code):
     data = {"facebook": {"attachment": {"type": "image","payload": {"url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"}}}}
 
     '''
-
-    data = {"facebook": {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "Here is the Editorial",
-                    #"subtitle": "Element #1 of an hscroll",
-                    #"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": speech,
-                        "title": problem_code
+    if flag == 1:  
+        data = {"facebook": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": "Here is the Editorial",
+                        #"subtitle": "Element #1 of an hscroll",
+                        #"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                        "buttons": [{
+                            "type": "web_url",
+                            "url": speech,
+                            "title": problem_code
+                        }]
                     }]
-                }]
+                }
             }
-        }
-    }}
-
+        }}
+    else:
+        data={}
 
 
 
