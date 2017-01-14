@@ -59,8 +59,47 @@ def processRequest(req):
         print(count)
         #print(keyword)
         res = makeWebhookResult3(keyword,handle,count)
-              
+
+    elif req.get("result").get("action") == "editorial":
+        query_string = req.get("result").get("resolvedQuery").strip().split()
+        for word in query_string:
+            if word[0]=='@':
+                problemcode = word[1:]
+                break
+        problemcode = problemcode.upper() 
+        res = makeWebhookResult_editorial(problemcode)
     return res
+
+def makeWebhookResult_editorial(problem_code):
+    ini = 'http://www.codechef.com/problems/'
+    name = problem_code
+    res=requests.get(ini+name)
+    res.raise_for_status()
+    soup = bs4.BeautifulSoup(res.text,'html.parser')
+
+    container = soup.find('table', attrs = {'align':'left'})
+
+    if "Editorial" in container.text:
+        y = container.findAll('tr')
+        i=0
+        while i<len(y):
+            e = y[i]
+            if("Editorial" in e.text):
+                s=e.find('a')
+                speech = s.text
+                break
+            i=i+1
+        
+    else:
+        print("no hurray")
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        "data": data,
+        # "contextOut": [],
+        "source": "randomproblemgenerator"
+    }
 
 
 
