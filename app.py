@@ -181,7 +181,7 @@ def makeWebhookResult3(keyword,handle,count):
         speech += '\n'
         speech += '\n'
         #print(speech) 
-        arr = data["facebook"]["attachment"]["payload"]["elements"][i]["buttons"]
+        arr = data["facebook"]["attachment"]["payload"]["elements"][0]["buttons"]
         arr.append({
                             "type": "web_url",
                             "url": speech,
