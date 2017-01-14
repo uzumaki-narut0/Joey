@@ -39,9 +39,12 @@ def processRequest(req):
        # return {}
         platform = req.get("result").get("parameters").get("website").strip()
         query_string = req.get("result").get("resolvedQuery").strip().split()
+        for word in query_string:
+            if word[0]=='@':
+                handle = word[1:]
+                break
        # print(platform)
        # print(query_string)
-        handle = query_string[-1]
         #print(handle)
         res = makeWebhookResult2(platform,handle)
 
