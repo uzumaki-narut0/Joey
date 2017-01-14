@@ -38,7 +38,7 @@ def processRequest(req):
         platform = req.get("result").get("parameters").get("website")
         query_string = req.get("result").get("resolvedQuery").strip().split()
         handle = query_string[-1]
-        res = makeWebhookResult2(data,platform)
+        res = makeWebhookResult2(data,platform,handle)
         
         
     return res
@@ -79,7 +79,7 @@ def makeWebhookResult(data,req):
     }
 
 
-def makeWebhookResult2(data,req):
+def makeWebhookResult2(data,req,handle):
 
     platform = platform.strip()
     if(platform.strip() == "codeforces"):
@@ -88,9 +88,9 @@ def makeWebhookResult2(data,req):
         data = json.loads(response.read().decode('utf-8'))
         
         speech = 'Current Rating : ' + str(data['result'][0]['rating'])
-        speech += 'Current Rank   : ' + data['result'][0]['rank']
-        speech += 'Max Rating     : ' + str(data['result'][0]['maxRating'])
-        speech += 'Max Rank       : ' + data['result'][0]['maxRank']
+       # speech += 'Current Rank   : ' + data['result'][0]['rank']
+       # speech += 'Max Rating     : ' + str(data['result'][0]['maxRating'])
+       # speech += 'Max Rank       : ' + data['result'][0]['maxRank']
     elif(platform == "codechef"):
             pass
     data = result
