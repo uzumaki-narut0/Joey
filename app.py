@@ -107,21 +107,20 @@ def makeWebhookResult2(platform,handle):
         res.raise_for_status()
         soupobj = BeautifulSoup(res.text,'html.parser')
         ranks = soupobj.select('hx')
-        print ('RANKINGS FOR '+ str(handle) +'\n' )
         if ranks[0].getText()=='NA':
-                print('LONG CHALLENGE:'+ranks[0].getText())
+                speech = 'Long Challenge:' +'NA' + '\n'
         else:
-                print ('LONG CHALLENGE:'+ranks[0].getText()+'/'+ranks[1].getText() )
+                speech = 'Long Challenge:'+ranks[0].getText()+' / '+ranks[1].getText() + '\n'
         if len(ranks)<3 or ranks[2].getText()=='NA':
-                print ('SHORT CHALLENGE:'+'NA' )
+                speech += 'Short Challenge:'+'NA' + '\n'
         else:
-                print ('SHORT CHALLENGE:'+ranks[2].getText()+'/'+ranks[3].getText() )
+                speech += 'Short Challenge:'+ranks[2].getText()+' / '+ranks[3].getText() + '\n'
         if len(ranks)<4 or ranks[4].getText()=='NA':
-                print ('LUNCHTIME:'+ 'NA' )
+                speech += 'LunchTime:'+ 'NA' + '\n'
         else:	
-                print ('LUNCHTIME:'+ranks[4].getText()+'/'+ranks[5].getText() )
-        print ('**Global Rank/Country Rank' )
-        speech = "working"
+                speech += 'LunchTime:'+ranks[4].getText()+' / '+ranks[5].getText() + '\n'
+        speech += 'Global Rank / Country Rank'
+        #speech = "working"
     #data = result
 
     print("Response:")
