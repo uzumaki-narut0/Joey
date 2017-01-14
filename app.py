@@ -74,6 +74,7 @@ def processRequest(req):
 '''
 function which takes problem_code as parameter
 and returns editorial page link if present on codechef
+fully functional: don't touch!! fuck yeah!!!
 '''
 
 def makeWebhookResult_editorial(problem_code):
@@ -97,12 +98,7 @@ def makeWebhookResult_editorial(problem_code):
         
     else:
         speech = "I am afraid, this problem has no Editorial"
-    print(speech)
-    '''remove below code if not works
-
-    data = {"facebook": {"attachment": {"type": "image","payload": {"url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"}}}}
-
-    '''
+   # print(speech)
     if flag == 1:  
         data = {"facebook": {
             "attachment": {
@@ -141,7 +137,7 @@ def makeWebhookResult_editorial(problem_code):
 
 
 '''
-a function which generates random spoj problem
+a function which generates random codeforces problem
 '''
 
 def makeWebhookResult3(keyword,handle,count):
@@ -152,15 +148,45 @@ def makeWebhookResult3(keyword,handle,count):
     soup = BeautifulSoup(data, 'html.parser')
     container = soup.find('div', attrs = {'id': keyword})
     links = container.findAll('a')
+    mega_data = {}
+
+
+    data = {"facebook": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": "Here is the Editorial",
+                        #"subtitle": "Element #1 of an hscroll",
+                        #"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                        "buttons": [
+                        }]
+                    }]
+                }
+            }
+        }}
+    
+
+
+    
     speech = 'Here you go:'
     speech += '\n'
     speech += '\n'
     cnt = int(count)
     for i in range(cnt):
+        speech = ""
         speech += links[i].get('href')
         speech += '\n'
         speech += '\n'
-        #print(speech)
+        #print(speech) 
+
+        data["facebook"]["attachement"]["type"]["payload"]["template_type"]["buttons"].append({
+                            "type": "web_url",
+                            "url": speech,
+                            "title": problem_code)
+
+    
     
 
     return {
