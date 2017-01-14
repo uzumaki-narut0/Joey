@@ -98,7 +98,7 @@ def makeWebhookResult_editorial(problem_code):
     return {
         "speech": speech,
         "displayText": speech,
-        "data": data,
+        #"data": data,
         # "contextOut": [],
         "source": "editorialsource"
     }
