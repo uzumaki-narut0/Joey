@@ -52,8 +52,9 @@ def makeWebhookResult(data,req):
     # print(json.dumps(item, indent=4))
 
     speech = "here are your contest results: " #+ #result[0]["name"]
-    for i in range(2):
+    for i in range(4):
         speech = speech + result[i]["name"]
+        speech = speech + "\"
     data = result
 
     print("Response:")
