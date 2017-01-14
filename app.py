@@ -32,29 +32,13 @@ def processRequest(req):
     if req.get("result").get("action") != "codingevents.response":
         return {}
     baseurl = 'https://tranquil-caverns-50595.herokuapp.com/'
-#    yql_query = makeYqlQuery(req)
-#    if yql_query is None:
-#        return {}
-#    yql_url = baseurl + urllib.urlencode({'q': yql_query}) + "&format=json"
     result = urllib.request.urlopen(baseurl).read()
     data = json.loads(result)
     res = makeWebhookResult(data,req)
     return res
 
-
-#def makeYqlQuery(req):
-#    result = req.get("result")
-#    parameters = result.get("parameters")
-#    city = parameters.get("geo-city")
-#    if city is None:
-#        return None
-
-#    return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
-
-
 def makeWebhookResult(data,req):
 
-    
     query = data.get('result')
     if query is None:
         return {}
@@ -68,6 +52,8 @@ def makeWebhookResult(data,req):
     # print(json.dumps(item, indent=4))
 
     speech = "here are your contest results: " #+ #result[0]["name"]
+    for i in range(2):
+        speech = speech + result[i]["name"]
     data = result
 
     print("Response:")
