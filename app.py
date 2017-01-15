@@ -128,7 +128,7 @@ def makeWebhookResult_partial(handle):
     return {
         "speech": speech,
         "displayText": speech,
-        "data": data,
+        #"data": data,
         # "contextOut": [],
         "source": "partial"
     }
