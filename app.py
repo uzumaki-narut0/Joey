@@ -101,7 +101,7 @@ def makeWebhookResult_partial(handle):
 
     i=0
     p = f[i]
-    speech = 'Here are some problems: '
+    speech = 'Here are some problems:'
     speech += '\n'
     while i>-1:
         p=f[i]
@@ -124,7 +124,7 @@ def makeWebhookResult_partial(handle):
         speech += '\n'
         print(l[i].text)
         i=i+1
-
+    
     return {
         "speech": speech,
         "displayText": speech,
