@@ -241,6 +241,8 @@ def makeWebhookResult(data,req):
     speech += '\n'
     speech = speech + '\n'
     '''
+    speech = ""
+    
     for i in range(1):
         '''
         speech = ""
