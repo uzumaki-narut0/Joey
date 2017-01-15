@@ -241,7 +241,7 @@ def makeWebhookResult(data,req):
     speech += '\n'
     speech = speech + '\n'
     '''
-    for i in range(3):
+    for i in range(1):
         '''
         speech = ""
         speech = speech + result[i]["name"] + " on "
@@ -254,6 +254,7 @@ def makeWebhookResult(data,req):
                             "type": "web_url",
                             "url": result[i]["contest_url"],
                             "title": result[i]["name"]})
+        print(arr[i]["url"])
 
     #data = result
 
