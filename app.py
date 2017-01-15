@@ -138,6 +138,7 @@ def makeWebhookResult_editorial(problem_code):
 
 '''
 a function which generates random codeforces problem
+fully functional: don't touch!! fuck yeah!!!
 '''
 
 def makeWebhookResult3(keyword,handle,count):
@@ -220,15 +221,41 @@ def makeWebhookResult(data,req):
         return {}
     # print(json.dumps(item, indent=4))
 
+    data = {"facebook": {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": "Here are your problems!",
+                        #"subtitle": "Element #1 of an hscroll",
+                        #"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                        "buttons": [
+                        ]
+                    }]
+                }
+            }
+        }}
+    '''
     speech = "Here are your results: "  #+ #result[0]["name"]
     speech += '\n'
     speech = speech + '\n'
+    '''
     for i in range(3):
+        '''
+        speech = ""
         speech = speech + result[i]["name"] + " on "
         speech = speech + result[i]["contest_url"]
         speech = speech + '\n'
         speech = speech + '\n'
-    data = result
+        '''
+        arr = data["facebook"]["attachment"]["payload"]["elements"][0]["buttons"]
+        arr.append({
+                            "type": "web_url",
+                            "url": result[i]["contest_url"],
+                            "title": result[i]["name"]})
+
+    #data = result
 
     print("Response:")
     print(speech)
