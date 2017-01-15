@@ -69,7 +69,71 @@ def processRequest(req):
         problemcode = problemcode.upper()
         print(problemcode)
         res = makeWebhookResult_editorial(problemcode)
+
+    elif req.get("result").get("action") == "partial.problems":
+        query_string = req.get("result").get("resolvedQuery").strip().split()
+        for word in query_string:
+            if word[0]=='@':
+                handle = word[1:]
+                break
+        res = makeWebhookResult_partial(handle)
+        
+
+        
     return res
+
+
+
+def makeWebhookResult_partial(handle):
+
+    url = 'http://www.codechef.com/users/' + handle
+    res = requests.get(url)
+    res.raise_for_status()
+    soup = BeautifulSoup(res.text,'html.parser')
+
+    container = soup.find('div', attrs = {'class':'profile'})
+
+    x = container.findAll('table')
+
+    y = x[1]
+
+    f = y.findAll('tr')
+
+    i=0
+    p = f[i]
+    speech = 'Here are some problems: '
+    speech += '\n'
+    while i>-1:
+        p=f[i]
+        if "Problems Partially Solved:" in p.text:
+            break
+        i=i+1
+           
+    z = f[i]
+
+    m = z.findAll('td')
+
+    n = m[1]
+
+    l = n.findAll('p')
+
+    i=0
+
+    while i<3:
+        speech += l[i].text
+        speech += '\n'
+        print(l[i].text)
+        i=i+1
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        "data": data,
+        # "contextOut": [],
+        "source": "partial"
+    }
+        
+
 
 '''
 function which takes problem_code as parameter
