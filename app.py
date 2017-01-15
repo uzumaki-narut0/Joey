@@ -227,7 +227,7 @@ def makeWebhookResult(data,req):
                 "payload": {
                     "template_type": "generic",
                     "elements": [{
-                        "title": "Here are your problems!",
+                        "title": "Here are upcoming contest problems!",
                         #"subtitle": "Element #1 of an hscroll",
                         #"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
                         "buttons": [
