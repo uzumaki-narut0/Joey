@@ -243,7 +243,7 @@ def makeWebhookResult(data,req):
     '''
     speech = ""
     
-    for i in range(1):
+    for i in range(3):
         '''
         speech = ""
         speech = speech + result[i]["name"] + " on "
