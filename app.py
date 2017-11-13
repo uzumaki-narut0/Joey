@@ -207,7 +207,7 @@ fully functional: don't touch!! fuck yeah!!!
 
 def makeWebhookResult3(keyword,handle,count):
     #print(count)
-    url = 'http://code-drills.com/profile?handles=' + handle
+    url = 'https://code-drills.com/profile?handles=' + handle
     #print(url)
     data = requests.get(url).text
     soup = BeautifulSoup(data, 'html.parser')
